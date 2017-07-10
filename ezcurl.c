@@ -47,6 +47,8 @@ extern char *ezcurl(char *url)
 
   curl_handle = curl_easy_init();
   curl_easy_setopt(curl_handle, CURLOPT_URL, url);
+  curl_easy_setopt(curl_handle, CURLOPT_SSL_VERIFYPEER, 0L);
+  curl_easy_setopt(curl_handle, CURLOPT_SSL_VERIFYHOST , 0L);
   curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
   curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
   curl_easy_setopt(curl_handle, CURLOPT_USERAGENT, "libcurl-agent/1.0");
@@ -57,8 +59,8 @@ extern char *ezcurl(char *url)
             curl_easy_strerror(res));
   }
   else {
+    /*printf("%s \n", chunk.memory);*/
     return (long)chunk.memory;
-    //printf("%s \n", string);
 
   }
 
