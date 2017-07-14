@@ -12,7 +12,9 @@ int main(){
 	int i;
 	int size;
 
-	size = ezXPathXML("https://www.sitemaps.org/sitemap.xml","/*[local-name() = 'urlset']/*[local-name() = 'url']/*[local-name() = 'loc']",output);
+	char *website = "https://www.sitemaps.org/sitemap.xml";
+	char *xpath = "/*[local-name() = 'urlset']/*[local-name() = 'url']/*[local-name() = 'loc']";
+	size = ezXPathXML(website,xpath,output);
 	if(size!=0){
 		printf("Found %d elements:\n",size);
 		for(i =0;i<size;i++){
@@ -20,7 +22,10 @@ int main(){
 			free(output[i]);
 		}
 	}
-	size = ezXPathXMLFile("sitemap.xml","/*[local-name() = 'urlset']/*[local-name() = 'url']/*[local-name() = 'loc']",output);
+
+	char *file = "sitemap.xml";
+	xpath = "/*[local-name() = 'urlset']/*[local-name() = 'url']/*[local-name() = 'loc']";
+	size = ezXPathXMLFile(file,xpath,output);
 	if(size!=0){
 		printf("Found %d elements:\n",size);
 		for(i =0;i<size;i++){
@@ -28,7 +33,10 @@ int main(){
 			free(output[i]);
 		}
 	}
-	size = ezXPathHTML("https://www.wordsmith.org/words/today.html","/html/head/title",output);
+
+	website = "https://www.wordsmith.org/words/today.html";
+	xpath = "/html/head/title";
+	size = ezXPathHTML(website,xpath,output);
 	if(size!=0){
 		printf("Found %d elements:\n",size);
 		for(i =0;i<size;i++){
@@ -36,7 +44,10 @@ int main(){
 			free(output[i]);
 		}
 	}
-	size = ezXPathHTMLFile("example.com","/html/head/title",output);
+
+	file = "example.com";
+	xpath = "/html/head/title";
+	size = ezXPathHTMLFile(file,xpath,output);
 	if(size!=0){
 		printf("Found %d elements:\n",size);
 		for(i =0;i<size;i++){
@@ -46,4 +57,3 @@ int main(){
 	}
 	return 1;
 }
-
