@@ -4,9 +4,6 @@ Simplified functions for returning strings from html and xml hosted locally and 
 Also contains ezCurl
 
 
-Examples are in main.c
-
-
 As this uses the libxml and curl libraries that requires the flags:
 
 ```
@@ -15,6 +12,7 @@ CFLAGS +=-c `xml2-config --cflags` `curl-config --cflags` -Wall
 LIBS=`xml2-config --libs` `curl-config --libs`
 ```
 
+Examples are in main.c
 
 ```
 char *ezcurl(char *url)
@@ -27,5 +25,4 @@ int extern ezXPathHTML(char *website,char *expr,char *output[])
 
 int extern ezXPathHTMLFile(char *file,char *expr,char *output[])
 
-int extern ezXPathHTMLFile(char *file,char *expr,char *output[])
 ```
