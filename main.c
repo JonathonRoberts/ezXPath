@@ -34,8 +34,8 @@ int main(){
 		}
 	}
 
-	website = "https://www.wordsmith.org/words/today.html";
-	xpath = "/html/head/title";
+	website = "http://www.jokesoftheday.net/";
+	xpath = "id('content')/div[3]/div[1]";
 	size = ezXPathHTML(website,xpath,output);
 	if(size!=0){
 		printf("Found %d elements:\n",size);
